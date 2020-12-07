@@ -93,6 +93,13 @@ from EMPLOYEES e, EMPLOYEES c
 where e.DEPARTMENT_ID = c.DEPARTMENT_ID(+)
 and e.LAST_NAME != c.LAST_NAME
 order by e.LAST_NAME;
+--풀이
+select e.DEPARTMENT_ID, e.LAST_NAME, c.LAST_NAME colleague
+from EMPLOYEES e, EMPLOYEES c
+where e.DEPARTMENT_ID = c.DEPARTMENT_ID
+and e.EMPLOYEE_ID <> c.EMPLOYEE_ID
+and c.DEPARTMENT_ID in (20, 50)
+order BY DEPARTMENT_ID, c.EMPLOYEE_ID, colleague;
 
 --10
 select LAST_NAME, HIRE_DATE
@@ -141,7 +148,8 @@ order by min(SALARY) desc;
 select d.DEPARTMENT_NAME as name, d.LOCATION_ID as location, count(*) "Number of People", round(avg(salary), 2) as salary
 from DEPARTMENTS d, EMPLOYEES e
 where e.DEPARTMENT_ID = d.DEPARTMENT_ID
-group by d.DEPARTMENT_NAME, d.LOCATION_ID;
+group by d.DEPARTMENT_NAME, d.LOCATION_ID
+order by name;
 
 --11
 --12
