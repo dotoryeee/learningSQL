@@ -1,3 +1,24 @@
+'''
+파이썬과 db 연동
+=> 파이썬은 데이터를 리스트에 담으면 프로그램 종료시 다 날라감
+=> 데이터를 영구 보관. => 파이썬에서 사용한 데이터를 db 전달.
+
+cx_Oracle: 라이브러리 먼저 설치. 여기에 오라클과 연동하고 sql을 실행할 수 있는
+기능을 구현해 놓은 라이브러리임.
+
+파이썬 db 작업
+1. db 연결(커넥션 수립하고 커넥션 객체를 받아옴으로 db 사용이 가능)
+cx_Oracle.connect(id, pwd, db주소:리스너번호/xe, encoding):db 연결 함수
+
+2. cursor 객체 생성: 파이썬에서 sql 실행을 담당.
+3. 실행하고 싶은 sql 문장을 만든다(문자열)
+4. cursor.execute(): sql을 실행하는 함수. 파라메터로 sql을 전달
+sql문이 검색이면 검색 결과는 cursor 객체에 저장되므로 이 값을 하나씩
+꺼내서 처리하는 구문이 더 필요.
+sql 문이 insert, update, delete 라면 이 문장 실행하고 끝
+5. connection 끊는다(close())
+'''
+
 import cx_Oracle    #oracle api 라이브러리 임포트
 class Test:
     def __init__(self, num=None, name=None, price=None, desc=None):
